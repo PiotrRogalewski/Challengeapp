@@ -1,46 +1,104 @@
-﻿var name = "Piotr";
-var age = 34;
-bool isActive = true;
-if (name != "Piotr")
-{
-    isActive = false;
-}
-Console.WriteLine("CZY NAZYWASZ SIĘ PIOTR? I CZY MASZ PONIŻEJ 40 LAT?");
-if (age < 40)
+﻿//ZADANIE DOMOWE z dnia 4
 
-{
-    if (isActive == true)
-    {
-        Console.WriteLine("- Tak. Jestem Piotr, mam poniżej 40 lat.");
-    }
-    else
-    {
+// zmienne z danymi:
+var name = "Piotr";
+int age = 34;
+bool man = true;
 
-        Console.WriteLine("- Jestem kimś innym, ale mam poniżej 40 lat.");
-    }
-}
-else if (age < 50)
-{
-    Console.WriteLine("- Mam pomiędzy 40, a 50 lat!");
-    if (isActive == true)
-    {
-        Console.WriteLine("I nazywam się Piotr.");
-    }
-    else
-    {
-        Console.WriteLine("Jestem kimś innym.");
-    }
-}
-else
-{
-    Console.WriteLine("- Jestem starszy...");
-    if (isActive == true)
-    {
-        Console.WriteLine("...Ale nazywam się Piotr.");
-    }
-    else 
-    {
-        Console.WriteLine("...i nie nazywam się Piotr.");
-    }
-}
+// Jeden z komunikatów:
 
+// (1) Kobieta poniżej 30 lat.
+// (2) Ewa, lat 33.
+// (3) Niepełnoletni Mężczyzna.
+// *(4) Piotr, powyżej 30 lat.
+// *(5) Kinga, nie mniej niż 30 lat.
+// *(6) Franek, pomiędzy 40 a 50 lat.
+
+// Jeśli imię jest inne niż: Ewa, Piotr, Franek, Kinga wówczas dochodzą dwa nowe komunikaty oprócz już istniejących:
+// *(7) Pełnoletni Mężczyzna.
+// *(8) Kobieta, 30 lat lub więcej.
+
+
+// sprawdzam czy:
+// Płeć:    Mężczyzna czy Kobieta
+// Wiek:    jeśli mężczyzna: <18, >30, >=40 i <=50, >=18
+//          jeśli kobieta: <30, ==33, >=30
+// Imię:    Ewa, Piotr, Franek, Kinga
+
+if (man == true)
+{
+    if (name == "Piotr")
+    {
+        if (age < 18)
+        {
+            Console.WriteLine("Niepełnoletni Mężczyzna.");
+        }
+        else if (age > 30)
+        {
+            Console.WriteLine("Piotr, powyżej 30 lat.");
+        }
+    }
+    else if (name == "Franek")
+    {
+        if (age < 18)
+        {
+            Console.WriteLine("Niepełnoletni Mężczyzna.");
+        }
+        else if (age >= 40 && age <= 50)
+        {
+            Console.WriteLine("Franek, pomiędzy 40 a 50 lat.");
+        }
+    }
+    if (name != "Piotr" && name != "Franek")
+    {
+        if (age < 18)
+        {
+            Console.WriteLine("Niepełnoletni Mężczyzna.");
+        }
+        else if (age >= 18)
+        {
+            Console.WriteLine("Pełnoletni Mężczyzna");
+        }
+    }
+}
+else if (man == false)
+{
+    if (name == "Ewa")
+    {
+        if (age < 30)
+        {
+            Console.WriteLine("Kobieta poniżej 30 lat.");
+        }
+        else if (age == 33)
+        {
+            Console.WriteLine("Ewa, lat 33.");
+        }
+    }
+    else if (name == "Kinga")
+    {
+        if (age < 30)
+        {
+            Console.WriteLine("Kobieta poniżej 30 lat.");
+        }
+        else if (age >= 30)
+        {
+            Console.WriteLine("Kinga, nie mniej niż 30 lat.");
+        }
+    }
+    if (name != "Ewa" && name != "Kinga")
+    {
+        if (age < 30)
+        {
+            Console.WriteLine("Kobieta poniżej 30 lat.");
+        }
+        else if (age >= 30)
+        {
+            Console.WriteLine("Kobieta, 30 lat lub więcej.");
+        }
+    }
+}
+// Podstaw pod zmienną "name" dowolne imię, pod zmienną "age" dowolny wiek, a pod zmienną "man" true lub false
+// - zawsze wyświetli się jeden z ośmiu dostępnych komunikatów.
+
+// PS. To była czysta przyjemność. :) 
+// Pozdrawiam, Piotr (Tanard)
