@@ -21,14 +21,14 @@ namespace Challengeapp.Tests
         public void WhenUser2GetsPoints_ShouldReturnCorrectResult()
         {
             var user2 = new Employee("Tomasz", "Szewc", "29");
+            user2.AddScore(4);
+            user2.SubstractScore(7);
             user2.AddScore(5);
-            user2.SubstractScore(4);
-            user2.AddScore(7);
-            user2.SubstractScore(3);
-            user2.AddScore(6);
+            user2.SubstractScore(5);
+            user2.AddScore(3);
 
             var result2 = user2.Result;
-            Assert.AreEqual(11, result2);
+            Assert.AreEqual(0, result2);
         }
         [Test]
         public void WhenUser3GetsPoints_ShouldReturnCorrectResult()
