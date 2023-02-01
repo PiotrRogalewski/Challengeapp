@@ -13,6 +13,11 @@ Employee employee1 = new Employee("Jan", "Kowalski", "34");
 Employee employee2 = new Employee("Anna", "Nowak", "31");
 Employee employee3 = new Employee("Leon", "Wiśniewski", "38");
 
+bool draw1and2 = !true;
+bool draw1and3 = !true;
+bool draw2and3 = !true;
+bool drawAll = !true;
+
 employee1.AddScore(4);
 employee1.AddScore(8);
 employee1.AddScore(9);
@@ -63,9 +68,21 @@ foreach (var employee in employeeList)
         {
             employeeWithMaxResult = employee3;
         }
-        else if (employee1.Result == employee2.Result || employee2.Result == employee3.Result || employee1.Result == employee3.Result)
+        else if (employee1.Result == employee2.Result && employee1.Result > employee3.Result)
         {
-            employeeWithMaxResult = employee;
+            draw1and2 = true;
+        }
+        else if (employee1.Result == employee3.Result && employee1.Result > employee2.Result)
+        {
+            draw1and3 = true;
+        }
+        else if (employee2.Result == employee3.Result && employee1.Result < employee2.Result)
+        {
+            draw2and3 = true;
+        }
+        else if (employee1.Result == employee2.Result && employee1.Result == employee3.Result && employee2.Result == employee3.Result)
+        {
+            drawAll = true;
         }
     }
 }
@@ -74,4 +91,24 @@ Console.WriteLine("       " + result1 + "    -->  " + person1);
 Console.WriteLine("       " + result2 + "    -->  " + person2);
 Console.WriteLine("       " + result3 + "    -->  " + person3);
 Console.WriteLine(" ");
-Console.WriteLine(" Employee of the week is: " + employeeWithMaxResult.Name + employeeWithMaxResult.Surname + employeeWithMaxResult.Age + ", this person achieved the highest score with the number of points: " + employeeWithMaxResult.Result + ".");
+
+if (employeeWithMaxResult == employee1 || employeeWithMaxResult == employee2 || employeeWithMaxResult == employee3)
+{
+    Console.WriteLine(" Employee of the week is: " + employeeWithMaxResult.Name + employeeWithMaxResult.Surname + employeeWithMaxResult.Age + ", this person achieved the highest score with the number of points: " + employeeWithMaxResult.Result + ".");
+}
+else if (drawAll = true)
+{
+    Console.WriteLine("Employees of the week are: " + person1 + " and " + person2 + " and " + person3 + ", with the same number of points.");
+}
+else if (draw1and2 = true)
+{
+    Console.WriteLine(" Employees of the week are: " + person1 + " and " + person2 + ", with the same number of points.");
+}
+else if (draw1and3 = true)
+{
+    Console.WriteLine(" Employees of the week are: " + person1 + " and " + person3 + ", with the same number of points.");
+}
+else if (draw2and3 = true)
+{
+    Console.WriteLine("Employees of the week are: " + person2 + " and " + person3 + ", with the same number of points.");
+}
