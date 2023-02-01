@@ -1,4 +1,6 @@
 ﻿using Challengeapp;
+using System.Data;
+using System.Diagnostics.Tracing;
 
 var boardTitle = Employee.NameOfScoreboard;
 
@@ -13,19 +15,19 @@ Employee employee3 = new Employee("Leon", "Wiśniewski", "38");
 
 employee1.AddScore(4);
 employee1.AddScore(8);
-employee1.AddScore(7);
-employee1.AddScore(5);
-employee1.AddScore(8);
+employee1.AddScore(9);
+employee1.SubstractScore(2);
+employee1.AddScore(9);
 
-employee2.AddScore(5);
+employee2.SubstractScore(1);
+employee2.AddScore(8);
 employee2.AddScore(6);
-employee2.AddScore(5);
 employee2.AddScore(9);
 employee2.AddScore(7);
 
-employee3.AddScore(3);
 employee3.AddScore(5);
-employee3.AddScore(9);
+employee3.AddScore(7);
+employee3.SubstractScore(2);
 employee3.AddScore(8);
 employee3.AddScore(9);
 
@@ -49,7 +51,22 @@ foreach (var employee in employeeList)
 {
     if (employee.Result > maxResult)
     {
-        employeeWithMaxResult = employee;
+        if (employee1.Result > employee2.Result && employee1.Result > employee3.Result)
+        {
+            employeeWithMaxResult = employee1;
+        }
+        else if (employee2.Result > employee1.Result && employee2.Result > employee3.Result)
+        {
+            employeeWithMaxResult = employee2;
+        }
+        else if (employee3.Result > employee1.Result && employee3.Result > employee2.Result)
+        {
+            employeeWithMaxResult = employee3;
+        }
+        else if (employee1.Result == employee2.Result || employee2.Result == employee3.Result || employee1.Result == employee3.Result)
+        {
+            employeeWithMaxResult = employee;
+        }
     }
 }
 

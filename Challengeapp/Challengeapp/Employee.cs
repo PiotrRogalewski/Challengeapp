@@ -28,6 +28,10 @@
         {
             this.employeeScore.Add(points);
         }
+        public void SubstractScore(int minusPoints)
+        {
+            this.employeeScore.Add(-minusPoints);
+        }
 
     }
 }
