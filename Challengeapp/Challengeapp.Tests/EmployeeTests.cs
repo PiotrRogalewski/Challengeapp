@@ -1,6 +1,6 @@
 namespace Challengeapp.Tests
 {
-    public class Tests
+    public class EmployeeTests
     {
 
         [Test]

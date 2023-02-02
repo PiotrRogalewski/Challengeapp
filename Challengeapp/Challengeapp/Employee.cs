@@ -25,11 +25,32 @@
 
         public void AddScore(int points)
         {
-            this.employeeScore.Add(points);
+            if (points >= 0 && points <= 10)
+            {
+                this.employeeScore.Add(points);
+            }
+            else if (points > 10 || points < 0)
+            {
+                Console.WriteLine("Looks like someone is cheating here! You can only give 0-10 points, no more, no less.");
+                Console.WriteLine("If you want to substract points, you should use: --> SubstractScore <-- method.");
+                Console.WriteLine("PLEASE SET THE CORRECT NUMBER OF POINTS!");
+                Console.WriteLine(" ");
+            }
+            //please set the correct number of points!
         }
         public void SubstractScore(int minusPoints)
         {
-            this.employeeScore.Add(-minusPoints);
+            if (minusPoints >= 0 && minusPoints <= 10)
+            {
+                this.employeeScore.Add(minusPoints);
+            }
+            else if (minusPoints > 10 || minusPoints < 0)
+            {
+                Console.WriteLine("Looks like someone is cheating here! You can only give 0-10 minus points, no more, no less.");
+                Console.WriteLine("If you want to add points use: --> AddScore <-- method.");
+                Console.WriteLine("PLEASE SET THE CORRECT NUMBER OF POINTS!");
+                Console.WriteLine(" ");
+            }
         }
     }
 }
