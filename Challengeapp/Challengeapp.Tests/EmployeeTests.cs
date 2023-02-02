@@ -14,7 +14,6 @@ namespace Challengeapp.Tests
             user1.AddScore(4);
 
             var result1 = user1.Result;
-
             Assert.AreEqual(10, result1);
         }
         [Test]
