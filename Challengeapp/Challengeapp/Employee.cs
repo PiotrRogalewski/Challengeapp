@@ -5,6 +5,10 @@
         public static string NameOfScoreboard = "           EMPLOYEE SCOREBOARD";
         private List<int> employeeScore = new List<int>();
 
+        public Employee(string name) //only for tests
+        {
+            this.Name = name;
+        }
         public Employee(string name, string surname, string age)
         {
             this.Name = name;
@@ -36,7 +40,6 @@
                 Console.WriteLine("PLEASE SET THE CORRECT NUMBER OF POINTS!");
                 Console.WriteLine(" ");
             }
-            //please set the correct number of points!
         }
         public void SubstractScore(int minusPoints)
         {

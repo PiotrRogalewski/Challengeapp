@@ -11,7 +11,9 @@ Employee employee1 = new Employee("Jan", "Kowalski", "34");
 Employee employee2 = new Employee("Anna", "Nowak", "31");
 Employee employee3 = new Employee("Leon", "Wiśniewski", "38");
 
-//You should set .AddScore() to give points or .SubstractScore() to give minus points, with number of points from 0 to 10.
+// Please set the correct number of points. Choose from a point range of 0 to 10. 
+// You should set .AddScore() to give points or .SubstractScore() to give minus points. 
+
 //employee1 score:
 employee1.AddScore(5);
 employee1.AddScore(8);

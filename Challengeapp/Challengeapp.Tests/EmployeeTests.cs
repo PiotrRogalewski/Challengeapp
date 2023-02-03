@@ -2,7 +2,6 @@ namespace Challengeapp.Tests
 {
     public class EmployeeTests
     {
-
         [Test]
         public void WhenUser1GetsPoints_ShouldReturnCorrectResult()
         {
@@ -16,6 +15,7 @@ namespace Challengeapp.Tests
             var result1 = user1.Result;
             Assert.AreEqual(10, result1);
         }
+
         [Test]
         public void WhenUser2GetsPoints_ShouldReturnCorrectResult()
         {
@@ -29,6 +29,7 @@ namespace Challengeapp.Tests
             var result2 = user2.Result;
             Assert.AreEqual(0, result2);
         }
+
         [Test]
         public void WhenUser3GetsPoints_ShouldReturnCorrectResult()
         {
