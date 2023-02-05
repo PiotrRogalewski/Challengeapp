@@ -1,5 +1,5 @@
 ﻿using Challengeapp;
-
+ 
 var employee = new Employee("Jan", "Kowalski");
 employee.AddGrade(3);
 employee.AddGrade(5);

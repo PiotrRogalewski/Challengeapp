@@ -32,7 +32,7 @@ namespace Challengeapp.Tests
         public void StatisticsTesForAverage()
         {
             var employee = new Employee("Karol", "Heisenberg");
-
+             
             employee.AddGrade(8);
             employee.AddGrade(-2);
             employee.AddGrade(6);
