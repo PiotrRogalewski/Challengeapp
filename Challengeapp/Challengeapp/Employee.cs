@@ -2,58 +2,35 @@
 {
     public class Employee
     {
-        public static string NameOfScoreboard = "           EMPLOYEE SCOREBOARD";
-        private List<int> employeeScore = new List<int>();
-
-        public Employee(string name) //only for tests
+        private List<float> grades = new List<float>();
+        public Employee(string name, string surname)
         {
             this.Name = name;
-        }
-        public Employee(string name, string surname, string age)
-        {
-            this.Name = name;
-            this.Surname = " " + surname + ",";
-            this.Age = " lat " + age;
+            this.Surname = surname;
         }
 
         public string Name { get; private set; }
         public string Surname { get; private set; }
-        public string Age { get; private set; }
-        public int Result
+        public void AddGrade(float grade)
         {
-            get
-            {
-                return this.employeeScore.Sum();
-            }
+            this.grades.Add(grade);
         }
+        public Statistics GetStatistics()
+        {
+            var statistics = new Statistics();
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
 
-        public void AddScore(int points)
-        {
-            if (points >= 0 && points <= 10)
+            foreach (var grade in this.grades)
             {
-                this.employeeScore.Add(points);
+                statistics.Max = Math.Max(statistics.Max, grade);
+                statistics.Min = Math.Min(statistics.Min, grade);
+                statistics.Average += grade;
             }
-            else if (points > 10 || points < 0)
-            {
-                Console.WriteLine("Looks like someone is cheating here! You can only give 0-10 points, no more, no less.");
-                Console.WriteLine("If you want to substract points, you should use: --> SubstractScore <-- method.");
-                Console.WriteLine("PLEASE SET THE CORRECT NUMBER OF POINTS!");
-                Console.WriteLine(" ");
-            }
-        }
-        public void SubstractScore(int minusPoints)
-        {
-            if (minusPoints >= 0 && minusPoints <= 10)
-            {
-                this.employeeScore.Add(minusPoints);
-            }
-            else if (minusPoints > 10 || minusPoints < 0)
-            {
-                Console.WriteLine("Looks like someone is cheating here! You can only give 0-10 minus points, no more, no less.");
-                Console.WriteLine("If you want to add points use: --> AddScore <-- method.");
-                Console.WriteLine("PLEASE SET THE CORRECT NUMBER OF POINTS!");
-                Console.WriteLine(" ");
-            }
+
+            statistics.Average /= this.grades.Count;
+            return statistics;
         }
     }
 }
