@@ -1,9 +1,14 @@
 ﻿using Challengeapp;
- 
+
 var employee = new Employee("Jan", "Kowalski");
-employee.AddGrade(3);
-employee.AddGrade(5);
-employee.AddGrade(4);
+employee.AddGrade("46");
+employee.AddGrade(65);
+employee.AddGrade(71u);
+employee.AddGrade(53l);
+employee.AddGrade(64ul);
+employee.AddGrade(42f);
+employee.AddGrade(92d);
+employee.AddGrade(85m);
 var statistics = employee.GetStatistics();
 
 Console.WriteLine($"Average: {statistics.Average:N2}");
