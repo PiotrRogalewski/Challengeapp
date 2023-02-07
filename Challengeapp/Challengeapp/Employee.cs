@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-
 namespace Challengeapp
 {
     public class Employee
@@ -39,133 +38,43 @@ namespace Challengeapp
         }
         public void AddGrade(sbyte grade)
         {
-            sbyte valueInSbyte = grade;
-            if (grade >= 0 && grade <= 100)
-            {
-                float valueInFloat = valueInSbyte;
-                this.grades.Add(valueInFloat);
-            }
-            else
-            {
-                Console.WriteLine("Invalid grade value.The value must be in range from 0 to 100.");
-            }
+            AddGrade((float)grade);
         }
         public void AddGrade(byte grade)
         {
-            byte valueInByte = grade;
-            if (grade >= 0 && grade <= 100)
-            {
-                float valueInFloat = valueInByte;
-                this.grades.Add(valueInFloat);
-            }
-            else
-            {
-                Console.WriteLine("Invalid grade value.The value must be in range from 0 to 100.");
-            }
+            AddGrade((float)grade);
         }
         public void AddGrade(short grade)
         {
-            short valueInShort = grade;
-            if (grade >= 0 && grade <= 100)
-            {
-                float valueInFloat = valueInShort;
-                this.grades.Add(valueInFloat);
-            }
-            else
-            {
-                Console.WriteLine("Invalid grade value.The value must be in range from 0 to 100.");
-            }
+            AddGrade((float)grade);
         }
         public void AddGrade(ushort grade)
         {
-            ushort valueInUshort = grade;
-            if (grade >= 0 && grade <= 100)
-            {
-                float valueInFloat = valueInUshort;
-                this.grades.Add(valueInFloat);
-            }
-            else
-            {
-                Console.WriteLine("Invalid grade value.The value must be in range from 0 to 100.");
-            }
+            AddGrade((float)grade);
         }
         public void AddGrade(int grade)
         {
-            int valueInInt = grade;
-            if (grade >= 0 && grade <= 100)
-            {
-                float valueInFloat = valueInInt;
-                this.grades.Add(valueInFloat);
-            }
-            else
-            {
-                Console.WriteLine("Invalid grade value.The value must be in range from 0 to 100.");
-            }
+            AddGrade((float)grade);
         }
         public void AddGrade(uint grade)
         {
-            uint valueInUint = grade;
-            if (grade >= 0 && grade <= 100)
-            {
-                float valueInFloat = valueInUint;
-                this.grades.Add(valueInFloat);
-            }
-            else
-            {
-                Console.WriteLine("Invalid grade value.The value must be in range from 0 to 100.");
-            }
+            AddGrade((float)grade);
         }
         public void AddGrade(long grade)
         {
-            long valueInLong = grade;
-            if (grade >= 0 && grade <= 100)
-            {
-                float valueInFloat = valueInLong;
-                this.grades.Add(valueInFloat);
-            }
-            else
-            {
-                Console.WriteLine("Invalid grade value.The value must be in range from 0 to 100.");
-            }
+            AddGrade((float)grade);
         }
         public void AddGrade(ulong grade)
         {
-            ulong valueInUlong = grade;
-            if (grade >= 0 && grade <= 100)
-            {
-                float valueInFloat = valueInUlong;
-                this.grades.Add(valueInFloat);
-            }
-            else
-            {
-                Console.WriteLine("Invalid grade value.The value must be in range from 0 to 100.");
-            }
+            AddGrade((float)grade);
         }
         public void AddGrade(double grade)
         {
-            double valueInDouble = grade;
-            if (grade >= 0 && grade <= 100)
-            {
-                float valueInFloat = (float)valueInDouble;
-                this.grades.Add(valueInFloat);
-            }
-            else
-            {
-                Console.WriteLine("Invalid grade value.The value must be in range from 0 to 100.");
-            }
+            AddGrade((float)grade);
         }
         public void AddGrade(decimal grade)
         {
-            decimal valueInDecimal = grade;
-            if (grade >= 0 && grade <= 100)
-            {
-                float valueInFloat = (float)valueInDecimal;
-                this.grades.Add(valueInFloat);
-            }
-            else
-            {
-                Console.WriteLine("Invalid grade value.The value must be in range from 0 to 100.");
-            }
+            AddGrade((float)grade);
         }
 
         public Statistics GetStatistics()

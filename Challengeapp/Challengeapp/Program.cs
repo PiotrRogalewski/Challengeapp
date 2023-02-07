@@ -8,7 +8,7 @@ employee.AddGrade(53l);
 employee.AddGrade(64ul);
 employee.AddGrade(42f);
 employee.AddGrade(92d);
-employee.AddGrade(85m);
+employee.AddGrade(45m);
 var statistics = employee.GetStatistics();
 
 Console.WriteLine($"Average: {statistics.Average:N2}");
