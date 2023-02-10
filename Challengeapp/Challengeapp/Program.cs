@@ -1,38 +1,41 @@
 ﻿using Challengeapp;
 
-var employee = new Employee("Jan", "Kowalski");
-employee.AddGrade("46");
-employee.AddGrade(65);
-employee.AddGrade(71u);
-employee.AddGrade(53l);
-employee.AddGrade(64ul);
-employee.AddGrade(42f);
-employee.AddGrade(92d);
-employee.AddGrade(45m);
+Console.WriteLine("=====================================================================================================================");
+Console.WriteLine("                                     Witaj w Programie XYZ do oceny pracowników!                                     ");
+Console.WriteLine("=====================================================================================================================");
+Console.WriteLine();
+Console.WriteLine("                 Aby dodać pojedyńczą ocenę punktową wpisz wartość z zakresu od 0 do 100, włącznie.");
+Console.WriteLine("                 Możesz też użyć liter, aby dodać wartość wg poniższej --> Tabeli liter : ");
+Console.WriteLine();
+Console.WriteLine("     'A' lub 'a' = 100        'B' lub 'b' = 90      'C' lub 'c' = 80      'D' lub 'd' = 70        'E' lub 'e' = 60");
+Console.WriteLine("     'F' lub 'f' = 50         'G' lub 'g' = 40      'H' lub 'h' = 30      'I' lub 'i' = 20        'J' lub 'j' = 10");
+Console.WriteLine();
 
-var statistics = employee.GetStatisticsWithForEach();
-Console.WriteLine("------ These are the stats that use the 'foreach' loop ------");
-Console.WriteLine($"Average: {statistics.Average:N2}");
-Console.WriteLine($"Min: {statistics.Min}");
-Console.WriteLine($"Max: {statistics.Max}");
-Console.WriteLine("");
+var employee = new Employee();
 
-var statistics1 = employee.GetStatisticsWithFor();
-Console.WriteLine("------ These are the stats that use the 'for' loop ------");
-Console.WriteLine($"Average: {statistics.Average:N2}");
-Console.WriteLine($"Min: {statistics.Min}");
-Console.WriteLine($"Max: {statistics.Max}");
-Console.WriteLine("");
+while (true)
+{
+    Console.WriteLine();
+    Console.WriteLine("     Podaj kolejną ocenę pracownika i naciśnij 'ENTER' (Aby zakończyć wpisz 'q' i naciśnij 'ENTER') :");
+    var input = Console.ReadLine();
+    if (input == "q")
+    {
+        break;
+    }
+    employee.AddGrade(input);
+}
 
-var statistics2 = employee.GetStatisticsWithDoWile();
-Console.WriteLine("------ These are the stats that use the 'do while' loop ------");
-Console.WriteLine($"Average: {statistics.Average:N2}");
-Console.WriteLine($"Min: {statistics.Min}");
-Console.WriteLine($"Max: {statistics.Max}");
-Console.WriteLine("");
+var statistics = employee.GetStatistics();
+Console.WriteLine();
+Console.WriteLine($"                Wyniki pracownika: ");
+Console.WriteLine();
+Console.WriteLine($"                Ocena końcowa pracownika* :             {statistics.AverageLetter}");
+Console.WriteLine(" ");
+Console.WriteLine($"                Minimalna wartość oceny:                {statistics.Min}");
+Console.WriteLine($"                Maksymalna wartość oceny:               {statistics.Max}");
+Console.WriteLine($"                Średnia przyznanych ocen:               {statistics.Average:N2}");
 
-var statistics3 = employee.GetStatisticsWithWile();
-Console.WriteLine("------ These are the stats that use the 'while' loop ------");
-Console.WriteLine($"Average: {statistics.Average:N2}");
-Console.WriteLine($"Min: {statistics.Min}");
-Console.WriteLine($"Max: {statistics.Max}");
+Console.WriteLine();
+Console.WriteLine("                 * - Najwyższa ocena możliwa do uzyskania to 'A', zaś najniższa to 'E'.");
+Console.WriteLine();
+Console.WriteLine();
