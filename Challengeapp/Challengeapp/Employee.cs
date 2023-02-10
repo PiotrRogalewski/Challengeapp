@@ -2,6 +2,7 @@
 {
     public class Employee
     {
+
         private List<float> grades = new List<float>();
         public Employee()
         {
@@ -23,7 +24,7 @@
             }
             else
             {
-                Console.WriteLine("Nieprawidłowa wartość. Podaj wartość z zakresu od 0 do 100 lub jedną z liter z Tabeli liter.");
+                throw new Exception("Nieprawidłowa wartość. Podaj wartość z zakresu od 0 do 100 lub jedną z liter z Tabeli liter.");
             }
         }
         public void AddGrade(string grade)
@@ -39,7 +40,7 @@
             }
             else
             {
-                Console.WriteLine("Nieprawidłowa wartość. Podaj wartość z zakresu od 0 do 100 lub jedną z liter z Tabeli liter.");
+                throw new Exception("Nieprawidłowa wartość. Podaj wartość z zakresu od 0 do 100 lub jedną z liter z Tabeli liter.");
             }
         }
 
@@ -78,8 +79,7 @@
                     this.grades.Add(10);
                     break;
                 default:
-                    Console.WriteLine("Nieprawidłowa wartość. Podaj wartość z zakresu od 0 do 100 lub jedną z liter z Tabeli liter.");
-                    break;
+                    throw new Exception("Nieprawidłowa wartość. Podaj wartość z zakresu od 0 do 100 lub jedną z liter z Tabeli liter.");
             }
         }
 

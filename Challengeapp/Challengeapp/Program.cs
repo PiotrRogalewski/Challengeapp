@@ -22,7 +22,14 @@ while (true)
     {
         break;
     }
-    employee.AddGrade(input);
+    try
+    {
+        employee.AddGrade(input);
+    }
+    catch (Exception exc)
+    {
+        Console.WriteLine($"Exception catched: {exc.Message}");
+    }
 }
 
 var statistics = employee.GetStatistics();
@@ -34,7 +41,6 @@ Console.WriteLine(" ");
 Console.WriteLine($"                Minimalna wartość oceny:                {statistics.Min}");
 Console.WriteLine($"                Maksymalna wartość oceny:               {statistics.Max}");
 Console.WriteLine($"                Średnia przyznanych ocen:               {statistics.Average:N2}");
-
 Console.WriteLine();
 Console.WriteLine("                 * - Najwyższa ocena możliwa do uzyskania to 'A', zaś najniższa to 'E'.");
 Console.WriteLine();
