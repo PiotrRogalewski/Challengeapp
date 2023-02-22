@@ -116,7 +116,9 @@
                 statistics.Average += grade;
             }
             statistics.Average /= this.grades.Count;
-            statistics.Average = (float)Math.Round(statistics.Average, 2);
+            statistics.Average = statistics.Average * 10;
+            statistics.Average = (float)Math.Round(statistics.Average, 2) / 10;
+            // Jest tak, gdyż Math.Round gubiło precyzje, nieco ją to poprawia :)
 
             switch (statistics.Average)
             {

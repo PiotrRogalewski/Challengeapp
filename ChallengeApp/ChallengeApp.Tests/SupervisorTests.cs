@@ -1,6 +1,4 @@
-using Challengeapp;
-
-namespace ChallengeApp.Tests
+namespace Challengeapp.Tests
 {
     public class SupervisorTests
     {

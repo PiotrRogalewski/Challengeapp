@@ -40,7 +40,7 @@
             }
             else if (grade < 0 || grade > 100)
             {
-                throw new Exception("  Nieprawidłowa wartość 'float'.   Podaj wartość z zakresu od 0 do 100 lub wartość w formie oceny od 1 do 6. Nie możesz dać ocen 6+ (lub +6) oraz 1- (lub -1), gdyż byłyby one poza zakresem 0-100 punktów.");
+                throw new Exception("  Nieprawidłowa wartość podanej liczby.   Podaj wartość z zakresu od 0 do 100 lub wartość w formie oceny od 1 do 6. Nie możesz przyznać ocen 6+ (lub +6) oraz 1- (lub -1), gdyż byłyby one poza zakresem 0-100 punktów.");
             }
         }
 
@@ -48,52 +48,52 @@
         {
             switch (grade)
             {
-                case "6" or "sześć":
+                case "6" or "sześć" or "six":
                     this.grades.Add(100);
                     break;
-                case "5" or "pięć":
+                case "5" or "pięć" or "five":
                     this.grades.Add(80);
                     break;
-                case "4" or "cztery":
+                case "4" or "cztery" or "four":
                     this.grades.Add(60);
                     break;
-                case "3" or "trzy":
+                case "3" or "trzy" or "three":
                     this.grades.Add(40);
                     break;
-                case "2" or "dwa":
+                case "2" or "dwa" or "two":
                     this.grades.Add(20);
                     break;
-                case "1" or "jeden":
+                case "1" or "jeden" or "one":
                     this.grades.Add(0);
                     break;
-                case "6-" or "-6" or "sześć minus":
+                case "6-" or "-6" or "sześć minus" or "six minus":
                     this.grades.Add(95);
                     break;
-                case "5+" or "+5" or "pięć plus":
+                case "5+" or "+5" or "pięć plus" or "five plus":
                     this.grades.Add(85);
                     break;
-                case "5-" or "-5" or "pięć minus":
+                case "5-" or "-5" or "pięć minus" or "five minus":
                     this.grades.Add(75);
                     break;
-                case "4+" or "+4" or "cztery plus":
+                case "4+" or "+4" or "cztery plus" or "four plus":
                     this.grades.Add(65);
                     break;
-                case "4-" or "-4" or "cztery minus":
+                case "4-" or "-4" or "cztery minus" or "four minus":
                     this.grades.Add(55);
                     break;
-                case "3+" or "+3" or "trzy plus":
+                case "3+" or "+3" or "trzy plus" or "three plus":
                     this.grades.Add(45);
                     break;
-                case "3-" or "-3" or "trzy minus":
+                case "3-" or "-3" or "trzy minus" or "three minus":
                     this.grades.Add(35);
                     break;
-                case "2+" or "+2" or "dwa plus":
+                case "2+" or "+2" or "dwa plus" or "two plus":
                     this.grades.Add(25);
                     break;
-                case "2-" or "-2" or "dwa minus":
+                case "2-" or "-2" or "dwa minus" or "two minus":
                     this.grades.Add(15);
                     break;
-                case "1+" or "+1" or "jeden plus":
+                case "1+" or "+1" or "jeden plus" or "one plus":
                     this.grades.Add(5);
                     break;
                 default:
@@ -101,11 +101,54 @@
                     {
                         this.AddGrade(result);
                     }
+                    else if (char.TryParse(grade, out char gradesInLetters))
+                    {
+                        AddGrade(gradesInLetters);
+                    }
                     else
                     {
-                        throw new Exception("  Nieprawidłowa wartość 'string'.  Podaj wartość z zakresu od 0 do 100 lub wartość w formie oceny od 1 do 6. Nie możesz dać ocen 6+ (lub +6) oraz 1- (lub -1), gdyż byłyby one poza zakresem 0-100 punktów.");
+                        throw new Exception("  Nieprawidłowa wartość tekstowa.  Podaj wartość z zakresu od 0 do 100 lub wartość w formie oceny od 1 do 6. Nie możesz przyznać ocen 6+ (lub +6) oraz 1- (lub -1), gdyż byłyby one poza zakresem 0-100 punktów.");
                     }
                     break;
+            }
+        }
+
+        public void AddGrade(char grade)
+        {
+            switch (grade)
+            {
+                case 'A' or 'a':
+                    this.grades.Add(100);
+                    break;
+                case 'B' or 'b':
+                    this.grades.Add(90);
+                    break;
+                case 'C' or 'c':
+                    this.grades.Add(80);
+                    break;
+                case 'D' or 'd':
+                    this.grades.Add(70);
+                    break;
+                case 'E' or 'e':
+                    this.grades.Add(60);
+                    break;
+                case 'F' or 'f':
+                    this.grades.Add(50);
+                    break;
+                case 'G' or 'g':
+                    this.grades.Add(40);
+                    break;
+                case 'H' or 'h':
+                    this.grades.Add(30);
+                    break;
+                case 'I' or 'i':
+                    this.grades.Add(20);
+                    break;
+                case 'J' or 'j':
+                    this.grades.Add(10);
+                    break;
+                default:
+                    throw new Exception("  Nieprawidłowa wartość literowa. Podaj wartość z zakresu od 0 do 100 lub jedną z liter z Tabeli liter.");
             }
         }
 
@@ -125,7 +168,9 @@
                 statistics.Average += grade;
             }
             statistics.Average /= this.grades.Count;
-            statistics.Average = (float)Math.Round(statistics.Average, 2);
+            statistics.Average = statistics.Average * 10;
+            statistics.Average = (float)Math.Round(statistics.Average, 2) / 10;
+            // Jest tak, gdyż Math.Round gubiło precyzje, nieco ją to poprawia :)
 
             switch (statistics.Average)
             {

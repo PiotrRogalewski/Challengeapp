@@ -17,16 +17,23 @@ while (selectAnEmployee != null)
     if (selectAnEmployee == "1")
     {
         Console.WriteLine($" Wybrałeś Kierownika: {supervisor.Name} {supervisor.Surname}, {supervisor.Gender}\n");
-        Console.WriteLine(" Możesz wpisać ocenę: '6' to(=) 100 punktów(pkt), '5' = 80 pkt, '4' = 60 pkt, '3' = 40 pkt, '2' = 20 pkt, a '1' = 0 pkt.");
+        Console.WriteLine(" Aby dodać ocenę w postaci punktów wpisz wartość z zakresu od 0 do 100, włącznie. ");
+        Console.WriteLine(" W przypadku, gdy chcesz przyznać tylko od 1 do 6 punktów, wpisz je z przecinkiem i 0 po nim, np. 4,0.");
+        Console.WriteLine(" Pozostałe liczby nie muszą mieć przecinka. Możesz też przyznać ocenę: ");
+        Console.WriteLine(" '6' to(=) 100 punktów(pkt), '5' = 80 pkt, '4' = 60 pkt, '3' = 40 pkt, '2' = 20 pkt, a '1' = 0 pkt.");
         Console.WriteLine(" Dodatkowo jeśli z przodu lub z tyłu oceny znajdzie się znak '+' to dodaje on 5 do liczby punktów np. '4+' = 65 pkt.");
-        Console.WriteLine(" Analogicznie jeśli z przodu lub z tyłu oceny znajdzie się znak '-' odejmie on 5 pkt od oceny np. '-3' = 35 pkt.\n");
+        Console.WriteLine(" Analogicznie jeśli z przodu lub z tyłu oceny znajdzie się znak '-' odejmie on 5 pkt od oceny np. '-3' = 35 pkt.");
+        Console.WriteLine(" Zamiast cyfr jako ocen możesz również wpisać ocenę słownie po polsku np. dla 5- :                                       'pięć minus' lub po angielsku 'five minus', inny przykład: 4 to 'cztery' lub 'four' itd.\n");
+        Console.WriteLine(" Możesz też użyć liter, aby dodać wartość wg poniższej --> Tabeli liter : \n");
+        Console.WriteLine("     'A' lub 'a' = 100        'B' lub 'b' = 90      'C' lub 'c' = 80      'D' lub 'd' = 70        'E' lub 'e' = 60");
+        Console.WriteLine("     'F' lub 'f' = 50         'G' lub 'g' = 40      'H' lub 'h' = 30      'I' lub 'i' = 20        'J' lub 'j' = 10\n");
         break;
     }
     else if (selectAnEmployee == "2")
     {
         Console.WriteLine($" Wybrałeś Pracownika: {employee.Name} {employee.Surname}, {employee.Gender}:\n");
-        Console.WriteLine("                 Aby dodać ocenę w postaci punktów wpisz wartość z zakresu od 0 do 100, włącznie.");
-        Console.WriteLine("                 Możesz też użyć liter, aby dodać wartość wg poniższej --> Tabeli liter : \n");
+        Console.WriteLine(" Aby dodać ocenę w postaci punktów wpisz wartość z zakresu od 0 do 100, włącznie.");
+        Console.WriteLine(" Możesz też użyć liter, aby dodać wartość wg poniższej --> Tabeli liter : \n");
         Console.WriteLine("     'A' lub 'a' = 100        'B' lub 'b' = 90      'C' lub 'c' = 80      'D' lub 'd' = 70        'E' lub 'e' = 60");
         Console.WriteLine("     'F' lub 'f' = 50         'G' lub 'g' = 40      'H' lub 'h' = 30      'I' lub 'i' = 20        'J' lub 'j' = 10\n");
         break;
