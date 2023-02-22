@@ -44,6 +44,16 @@
             }
         }
 
+        public void AddGrade(int grade)
+        {
+            AddGrade((float)grade);
+        }
+
+        public void AddGrade(double grade)
+        {
+            AddGrade((float)grade);
+        }
+
         public void AddGrade(string grade)
         {
             switch (grade)

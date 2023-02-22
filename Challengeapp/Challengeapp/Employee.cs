@@ -44,6 +44,17 @@
                 throw new Exception("  Nieprawidłowa wartość. Podaj wartość z zakresu od 0 do 100 lub jedną z liter z Tabeli liter.");
             }
         }
+
+        public void AddGrade(int grade)
+        {
+            AddGrade((float)grade);
+        }
+
+        public void AddGrade(double grade)
+        {
+            AddGrade((float)grade);
+        }
+
         public void AddGrade(string grade)
         {
             if (float.TryParse(grade, out float result))
