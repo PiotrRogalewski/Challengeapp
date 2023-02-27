@@ -1,39 +1,14 @@
 ﻿namespace Challengeapp
 {
-    public class Employee : IEmployee
+    public class EmployeeInMemory : EmployeeBase
     {
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname, string gender)
-        {
-            this.Name = name;
-            this.Surname = surname;
-            this.Gender = gender;
+        public EmployeeInMemory(string name, string surname, string gender)
+            : base(name, surname, gender)
+        { }
 
-            switch (gender)
-            {
-                case "M" or "m" or "mężczyzna" or "mezczyzna" or "man":
-                    this.Gender = "mężczyzna";
-                    break;
-                case "K" or "k" or "kobieta" or "woman" or "W" or "w":
-                    this.Gender = "kobieta";
-                    break;
-                case "I" or "i" or "inna płeć" or "other" or "Inna płeć":
-                    this.Gender = "inna płeć";
-                    break;
-                default:
-                    {
-                        Console.WriteLine("  Wykryto błąd:  Nazwa płci tej osoby jest nieprawidłowa. Masz do wyboru 3 opcje: 'mężczyzna', 'kobieta' lub 'inna płeć'. Możesz wpisać 'M' lub 'm' lub 'man' dla płci: mężczyzna, 'K' lub 'k' lub 'woman' dla płci: kobieta, albo 'I' lub 'i' lub 'other' dla opcji 'inna płeć'. Aby poprawnie ustalić płeć osoby: wpisz jedną z podanych liter, lub wpisz pełną nazwę jednej z trzech podanych opcji dla parametru płeć.");
-                    }
-                    break;
-            }
-        }
-
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public string Gender { get; protected set; }
-
-        public void AddGrade(float grade)
+        public override void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
@@ -41,25 +16,24 @@
             }
             else
             {
-                throw new Exception("  Nieprawidłowa wartość. Podaj wartość z zakresu od 0 do 100 lub jedną z liter z Tabeli liter.");
+                throw new Exception("  Nieprawidłowa wartość liczbowa. Podaj wartość z zakresu od 0 do 100 lub jedną z liter z Tabeli liter.");
             }
         }
 
-        public void AddGrade(int grade)
+        public override void AddGrade(int grade)
         {
             AddGrade((float)grade);
         }
 
-        public void AddGrade(double grade)
+        public override void AddGrade(double grade)
         {
             AddGrade((float)grade);
         }
 
-        public void AddGrade(string grade)
+        public override void AddGrade(string grade)
         {
             if (float.TryParse(grade, out float result))
             {
-
                 this.AddGrade(result);
             }
             else if (char.TryParse(grade, out char gradesInLetters))
@@ -68,11 +42,11 @@
             }
             else
             {
-                throw new Exception("  Nieprawidłowa wartość. Podaj wartość z zakresu od 0 do 100 lub jedną z liter z Tabeli liter.");
+                throw new Exception("  Nieprawidłowa wartość tekstowa. Podaj wartość z zakresu od 0 do 100 lub jedną z liter z Tabeli liter.");
             }
         }
 
-        public void AddGrade(char grade)
+        public override void AddGrade(char grade)
         {
             switch (grade)
             {
@@ -107,11 +81,11 @@
                     this.grades.Add(10);
                     break;
                 default:
-                    throw new Exception("  Nieprawidłowa wartość. Podaj wartość z zakresu od 0 do 100 lub jedną z liter z Tabeli liter.");
+                    throw new Exception("  Nieprawidłowa wartość literowa. Podaj wartość z zakresu od 0 do 100 lub jedną z liter z Tabeli liter.");
             }
         }
 
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
@@ -129,7 +103,6 @@
             statistics.Average /= this.grades.Count;
             statistics.Average = statistics.Average * 10;
             statistics.Average = (float)Math.Round(statistics.Average, 2) / 10;
-            // Jest tak, gdyż Math.Round gubiło precyzje, nieco ją to poprawia :)
 
             switch (statistics.Average)
             {
