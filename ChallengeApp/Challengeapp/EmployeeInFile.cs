@@ -54,64 +54,34 @@
             switch (grade)
             {
                 case 'A' or 'a':
-                    using (var writer = File.AppendText(fileName))
-                    {
-                        writer.WriteLine((float)100);
-                    }
+                    this.AddGrade((float)100);
                     break;
                 case 'B' or 'b':
-                    using (var writer = File.AppendText(fileName))
-                    {
-                        writer.WriteLine((float)90);
-                    }
+                    this.AddGrade((float)90);
                     break;
                 case 'C' or 'c':
-                    using (var writer = File.AppendText(fileName))
-                    {
-                        writer.WriteLine((float)80);
-                    }
+                    this.AddGrade((float)80);
                     break;
                 case 'D' or 'd':
-                    using (var writer = File.AppendText(fileName))
-                    {
-                        writer.WriteLine((float)70);
-                    }
+                    this.AddGrade((float)70);
                     break;
                 case 'E' or 'e':
-                    using (var writer = File.AppendText(fileName))
-                    {
-                        writer.WriteLine((float)60);
-                    }
+                    this.AddGrade((float)60);
                     break;
                 case 'F' or 'f':
-                    using (var writer = File.AppendText(fileName))
-                    {
-                        writer.WriteLine((float)50);
-                    }
+                    this.AddGrade((float)50);
                     break;
                 case 'G' or 'g':
-                    using (var writer = File.AppendText(fileName))
-                    {
-                        writer.WriteLine((float)40);
-                    }
+                    this.AddGrade((float)40);
                     break;
                 case 'H' or 'h':
-                    using (var writer = File.AppendText(fileName))
-                    {
-                        writer.WriteLine((float)30);
-                    }
+                    this.AddGrade((float)30);
                     break;
                 case 'I' or 'i':
-                    using (var writer = File.AppendText(fileName))
-                    {
-                        writer.WriteLine((float)20);
-                    }
+                    this.AddGrade((float)20);
                     break;
                 case 'J' or 'j':
-                    using (var writer = File.AppendText(fileName))
-                    {
-                        writer.WriteLine((float)10);
-                    }
+                    this.AddGrade((float)10);
                     break;
                 default:
                     throw new Exception("  Nieprawidłowa wartość literowa. Podaj wartość z zakresu od 0 do 100 lub jedną z liter z Tabeli liter.");
