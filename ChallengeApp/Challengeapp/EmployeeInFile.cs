@@ -4,6 +4,8 @@
     {
         private const string fileName = "grades.txt";
 
+        public override event GradeAddedDelegate GradeAdded;
+
         public EmployeeInFile(string name, string surname, string gender)
             : base(name, surname, gender)
         { }
@@ -15,6 +17,11 @@
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(grade);
+                }
+
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
                 }
             }
             else
@@ -54,34 +61,34 @@
             switch (grade)
             {
                 case 'A' or 'a':
-                    this.AddGrade((float)100);
+                    AddGrade((float)100);
                     break;
                 case 'B' or 'b':
-                    this.AddGrade((float)90);
+                    AddGrade((float)90);
                     break;
                 case 'C' or 'c':
-                    this.AddGrade((float)80);
+                    AddGrade((float)80);
                     break;
                 case 'D' or 'd':
-                    this.AddGrade((float)70);
+                    AddGrade((float)70);
                     break;
                 case 'E' or 'e':
-                    this.AddGrade((float)60);
+                    AddGrade((float)60);
                     break;
                 case 'F' or 'f':
-                    this.AddGrade((float)50);
+                    AddGrade((float)50);
                     break;
                 case 'G' or 'g':
-                    this.AddGrade((float)40);
+                    AddGrade((float)40);
                     break;
                 case 'H' or 'h':
-                    this.AddGrade((float)30);
+                    AddGrade((float)30);
                     break;
                 case 'I' or 'i':
-                    this.AddGrade((float)20);
+                    AddGrade((float)20);
                     break;
                 case 'J' or 'j':
-                    this.AddGrade((float)10);
+                    AddGrade((float)10);
                     break;
                 default:
                     throw new Exception("  Nieprawidłowa wartość literowa. Podaj wartość z zakresu od 0 do 100 lub jedną z liter z Tabeli liter.");

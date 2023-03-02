@@ -4,6 +4,8 @@
     {
         private List<float> grades = new List<float>();
 
+        public override event GradeAddedDelegate GradeAdded;
+
         public EmployeeInMemory(string name, string surname, string gender)
             : base(name, surname, gender)
         { }
@@ -13,6 +15,11 @@
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
+
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
@@ -51,34 +58,34 @@
             switch (grade)
             {
                 case 'A' or 'a':
-                    this.grades.Add(100);
+                    AddGrade((float)100);
                     break;
                 case 'B' or 'b':
-                    this.grades.Add(90);
+                    AddGrade((float)90);
                     break;
                 case 'C' or 'c':
-                    this.grades.Add(80);
+                    AddGrade((float)80);
                     break;
                 case 'D' or 'd':
-                    this.grades.Add(70);
+                    AddGrade((float)70);
                     break;
                 case 'E' or 'e':
-                    this.grades.Add(60);
+                    AddGrade((float)60);
                     break;
                 case 'F' or 'f':
-                    this.grades.Add(50);
+                    AddGrade((float)50);
                     break;
                 case 'G' or 'g':
-                    this.grades.Add(40);
+                    AddGrade((float)40);
                     break;
                 case 'H' or 'h':
-                    this.grades.Add(30);
+                    AddGrade((float)30);
                     break;
                 case 'I' or 'i':
-                    this.grades.Add(20);
+                    AddGrade((float)20);
                     break;
                 case 'J' or 'j':
-                    this.grades.Add(10);
+                    AddGrade((float)10);
                     break;
                 default:
                     throw new Exception("  Nieprawidłowa wartość literowa. Podaj wartość z zakresu od 0 do 100 lub jedną z liter z Tabeli liter.");
