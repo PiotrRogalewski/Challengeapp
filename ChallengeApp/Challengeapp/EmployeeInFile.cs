@@ -2,19 +2,23 @@
 {
     public class EmployeeInFile : EmployeeBase
     {
-        private const string fileName = "grades.txt";
-
         public override event GradeAddedDelegate GradeAdded;
 
-        public EmployeeInFile(string name, string surname, string gender)
-            : base(name, surname, gender)
-        { }
+        private readonly string fileNameWithEmployeeName;
+
+        private readonly static string fileName = "grades.txt";
+
+        public EmployeeInFile(string name, string surname, string gender, int age)
+                : base(name, surname, gender, age)
+        {
+            fileNameWithEmployeeName = $"{name}_{surname}_{fileName}";
+        }
 
         public override void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
-                using (var writer = File.AppendText(fileName))
+                using (var writer = File.AppendText(fileNameWithEmployeeName))
                 {
                     writer.WriteLine(grade);
                 }
@@ -105,9 +109,10 @@
         private List<float> ReadGradesFromFile()
         {
             var grades = new List<float>();
-            if (File.Exists($"{fileName} "))
+
+            if (File.Exists($"{fileNameWithEmployeeName} "))
             {
-                using (var reader = File.OpenText(fileName))
+                using (var reader = File.OpenText(fileNameWithEmployeeName))
                 {
                     var line = reader.ReadLine();
                     while (line != null)
@@ -118,50 +123,24 @@
                     }
                 }
             }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(" Plik do zapisu danych tego pracownika nie istnieje");
+                Console.ResetColor();
+            }
             return grades;
         }
 
         private Statistics CountStatistics(List<float> grades)
         {
             var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
 
             foreach (var grade in grades)
             {
-                if (grade >= 0)
-                {
-                    statistics.Max = Math.Max(statistics.Max, grade);
-                    statistics.Max = (float)Math.Round(statistics.Max, 2);
-                    statistics.Min = Math.Min(statistics.Min, grade);
-                    statistics.Min = (float)Math.Round(statistics.Min, 2);
-                    statistics.Average += grade;
-                }
+                statistics.AddGrade(grade);
             }
 
-            statistics.Average /= grades.Count;
-            statistics.Average = statistics.Average * 10;
-            statistics.Average = (float)Math.Round(statistics.Average, 2) / 10;
-
-            switch (statistics.Average)
-            {
-                case var average when average >= 80:
-                    statistics.AverageLetter = 'A';
-                    break;
-                case var average when average >= 60:
-                    statistics.AverageLetter = 'B';
-                    break;
-                case var average when average >= 40:
-                    statistics.AverageLetter = 'C';
-                    break;
-                case var average when average >= 20:
-                    statistics.AverageLetter = 'D';
-                    break;
-                default:
-                    statistics.AverageLetter = 'E';
-                    break;
-            }
             return statistics;
         }
     }

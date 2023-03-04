@@ -6,8 +6,8 @@
 
         public override event GradeAddedDelegate GradeAdded;
 
-        public EmployeeInMemory(string name, string surname, string gender)
-            : base(name, surname, gender)
+        public EmployeeInMemory(string name, string surname, string gender, int age)
+            : base(name, surname, gender, age)
         { }
 
         public override void AddGrade(float grade)
@@ -95,40 +95,12 @@
         public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
 
             foreach (var grade in this.grades)
             {
-                statistics.Max = Math.Max(statistics.Max, grade);
-                statistics.Max = (float)Math.Round(statistics.Max, 2);
-                statistics.Min = Math.Min(statistics.Min, grade);
-                statistics.Min = (float)Math.Round(statistics.Min, 2);
-                statistics.Average += grade;
+                statistics.AddGrade(grade);
             }
-            statistics.Average /= this.grades.Count;
-            statistics.Average = statistics.Average * 10;
-            statistics.Average = (float)Math.Round(statistics.Average, 2) / 10;
 
-            switch (statistics.Average)
-            {
-                case var average when average >= 80:
-                    statistics.AverageLetter = 'A';
-                    break;
-                case var average when average >= 60:
-                    statistics.AverageLetter = 'B';
-                    break;
-                case var average when average >= 40:
-                    statistics.AverageLetter = 'C';
-                    break;
-                case var average when average >= 20:
-                    statistics.AverageLetter = 'D';
-                    break;
-                default:
-                    statistics.AverageLetter = 'E';
-                    break;
-            }
             return statistics;
         }
     }

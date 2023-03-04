@@ -6,11 +6,12 @@
 
         public abstract event GradeAddedDelegate GradeAdded;
 
-        public EmployeeBase(string name, string surname, string gender)
+        public EmployeeBase(string name, string surname, string gender, int age)
         {
             this.Name = name;
             this.Surname = surname;
             this.Gender = gender;
+            this.Age = age;
 
             switch (gender)
             {
@@ -33,6 +34,7 @@
         public string Name { get; private set; }
         public string Surname { get; private set; }
         public string Gender { get; protected set; }
+        public int Age { get; private set; }
 
         public abstract void AddGrade(float grade);
 
